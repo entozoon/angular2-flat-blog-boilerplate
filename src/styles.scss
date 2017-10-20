@@ -1,1 +1,6 @@
-/* You can add global styles to this file, and also import other style files */
+@import 'app/app.component';
+
+// Individual components styles such as article-list.component.scss get included by their .ts file
+// That way, you can use :host {} as the selector which is pretty cool,
+// but of course it stops you from being able to control the order of the includes,
+// so they have to be reeeaally discrete (which is appropropriate for component styles)
