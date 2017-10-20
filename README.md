@@ -2,6 +2,8 @@
 
 Just tinkering around with angular-cli and webpack, rather than a boilerplate. For now, at least.
 
+![Its a start!](posterity/1.gif)
+
 ## Creating a project from scratch!
 
   ng new projectName --style=scss

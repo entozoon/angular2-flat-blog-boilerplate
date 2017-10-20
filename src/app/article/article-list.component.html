@@ -1,4 +1,4 @@
-[article-list.component.html]
+<div class="debug">(article-list.component.html)</div>
 
 <br>
 
@@ -8,9 +8,7 @@
 
 <br>
 
-<ul class="articles">
-  <li *ngFor="let article of articles">
-    <a href="i-dont-know-how-routing-works">{{article.title}}</a>
-    {{article.date}}
-  </li>
-</ul>
+<div class="article-listing" *ngFor="let article of articles">
+  <a href="i-dont-know-how-routing-works">{{article.title}}</a>
+  <div>{{article.date}}</div>
+</div>
