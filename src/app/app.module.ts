@@ -4,11 +4,11 @@ import { NgModule } from '@angular/core';
 import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
-import { ArticlesComponent } from './articles/articles.component';
+import { ArticleListComponent } from './article/article-list.component';
 import { ArticleComponent } from './article/article.component';
 
 @NgModule({
-  declarations: [AppComponent, ArticlesComponent, ArticleComponent],
+  declarations: [AppComponent, ArticleListComponent, ArticleComponent],
   imports: [BrowserModule, HttpModule],
   providers: [],
   bootstrap: [AppComponent]

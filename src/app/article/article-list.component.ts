@@ -3,12 +3,12 @@ import { Component, OnInit } from '@angular/core';
 import { ArticleService } from '../article.service';
 
 @Component({
-  selector: 'app-articles',
-  templateUrl: './articles.component.html',
-  styleUrls: ['./articles.component.css'],
+  selector: 'app-article-list',
+  templateUrl: './article-list.component.html',
+  styleUrls: ['./article-list.component.css'],
   providers: [ArticleService]
 })
-export class ArticlesComponent implements OnInit {
+export class ArticleListComponent implements OnInit {
   public articles;
 
   constructor(private ArticleService: ArticleService) {
