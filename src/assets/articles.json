@@ -1,0 +1,14 @@
+[
+  {
+    "title": "Delicious Thing",
+    "date": "2017-01-30",
+    "tags": ["delicious", "things"],
+    "content": "This thing truly was delicious; let it be known."
+  },
+  {
+    "title": "Vile Thing",
+    "date": "2017-02-30",
+    "tags": ["vile", "things"],
+    "content": "This subsequent thing however, was the vilest of things."
+  }
+]
