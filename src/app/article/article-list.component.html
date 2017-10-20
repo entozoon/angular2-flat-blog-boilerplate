@@ -1,8 +1,16 @@
 [article-list.component.html]
 
+<br>
+
+<!-- [(ngModel)]="searchQuery" creates two-way binding with input value and a variable -->
+<!-- (ngModelChange) makes it run a function when the value is changed -->
+<input [(ngModel)]="searchQuery" (ngModelChange)="search()" type="text" placeholder="Search" />
+
+<br>
+
 <ul class="articles">
   <li *ngFor="let article of articles">
-    {{article.title}}
+    <a href="i-dont-know-how-routing-works">{{article.title}}</a>
     {{article.date}}
   </li>
 </ul>
