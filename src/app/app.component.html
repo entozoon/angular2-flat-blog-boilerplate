@@ -1,7 +1,10 @@
 <div class="debug">(app.component.html)</div>
 
 <main>
-  <h1>Site</h1>
-
-  <app-article-list></app-article-list>
+  <h1>{{title}}</h1>
+  <nav>
+    <a routerLink="/" routerLinkActive="active">Crisis Center</a>
+    <a routerLink="/test" routerLinkActive="active">Test</a>
+  </nav>
+  <router-outlet></router-outlet>
 </main>
