@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgModule } from '@angular/core';
+
 import { ArticleService } from '../article.service';
 
 @Component({
@@ -8,6 +9,7 @@ import { ArticleService } from '../article.service';
   styleUrls: ['./article-list.component.scss'],
   providers: [ArticleService]
 })
+
 export class ArticleListComponent implements OnInit {
   public articlesCollection; // Entire collection of articles
   public articles; // Articles that are currently visible
@@ -23,6 +25,11 @@ export class ArticleListComponent implements OnInit {
     });
   }
 
+  //articlesCollection: Article[] = [];
+  
+   //   constructor(private articleService: ArticleService) { }
+  
+
   search() {
     // No need to pass the query as a parameter, it's already two-way bound to this.searchQuery
     console.log('Searching: ' + this.searchQuery);
@@ -37,5 +44,9 @@ export class ArticleListComponent implements OnInit {
     // Add to the results any content matches for the query.. but not if already in the results, erm..
   }
 
+  // ngOnInit(): void { // Call the service to get articles inside the Angular ngOnInit() lifecycle hook.
+  //   this.articleService.getArticles()
+  //       .then(articles => this.articles = articles.slice(1, 5)); // Specify 4 articles (2nd, 3rd, 4th, and 5th) with the Array.slice method.
+ //}
   ngOnInit() {}
 }
