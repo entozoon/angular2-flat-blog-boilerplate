@@ -17,14 +17,6 @@ export class ArticleService {
     });
   }
 
-  convertWeirdObjectToArray(obj) {
-    let arr = [];
-    for (let key in obj) {
-      arr.push(obj[key]);
-    }
-    return arr;
-  }
-
   getArticleById(id) {
     return new Promise(resolve => {
       // Gather all the articles (optimisation - this shouldn't always be necessary)
@@ -32,31 +24,11 @@ export class ArticleService {
         // We should really do this in the getTheArticles function, parsing it properly
         this.articles = articles;
 
-        // This doesn't actually fix anything, Myke you chump.
-        this.articles = this.convertWeirdObjectToArray(this.articles);
-
+        // Filter out the specific article we want
         const article = this.articles.find(_ => _.id == id); // NOT triple equals
 
-        console.log(article);
+        // Return it with the promise within .then()
         resolve(article);
-
-        // resolve([
-        //   {
-        //     title: 'hello',
-        //     content: 'hey',
-        //     date: 'dwa',
-        //     tags: ['dw', 'dw']
-        //   }
-        // ]);
-
-        // this.articles = articles;
-        // let tempArticles = articles;
-        // console.log(tempArticles);
-
-        // // Filter out the specific article we want
-        // const article = tempArticles.find(_ => _.id == id); // NOT triple equals
-
-        // resolve(article);
       });
     });
   }
