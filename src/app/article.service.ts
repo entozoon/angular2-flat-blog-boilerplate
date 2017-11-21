@@ -37,6 +37,7 @@ export class ArticleService {
 
         const article = this.articles.find(_ => _.id == id); // NOT triple equals
 
+        console.log(article);
         resolve(article);
 
         // resolve([

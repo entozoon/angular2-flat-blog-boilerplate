@@ -1,9 +1,12 @@
-<h1>{{article.title}}</h1>
+<!-- If the article variable exists: -->
+<div *ngIf="article">
+  <h1>{{article.title}}</h1>
 
-<div>
-  {{article.date}}
-</div>
+  <div>
+    {{article.date}}
+  </div>
 
-<div>
-  {{article.content}}
+  <div>
+    {{article.content}}
+  </div>
 </div>
