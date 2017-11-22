@@ -11,10 +11,17 @@ import { ArticleListComponent } from './article-list/article-list.component';
 import { ArticleComponent } from './article/article.component';
 import { PageNotFoundComponent } from './page-not-found.component';
 
+import { ArticleService } from './article.service';
+
 @NgModule({
-  declarations: [AppComponent, ArticleListComponent, ArticleComponent, PageNotFoundComponent],
+  declarations: [
+    AppComponent,
+    ArticleListComponent,
+    ArticleComponent,
+    PageNotFoundComponent
+  ],
   imports: [BrowserModule, HttpModule, FormsModule, AppRoutingModule],
-  providers: [],
+  providers: [ArticleService],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

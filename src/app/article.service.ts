@@ -1,35 +1,47 @@
 import { Injectable } from '@angular/core';
 import { Http, Response } from '@angular/http';
+import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 
 @Injectable()
 export class ArticleService {
-  public articles;
+  articles;
 
   constructor(public http: Http) {}
 
-  // Function returning a promise which, when resolved, returns the articles as an object array
-  getTheArticles() {
+  // Get every article - returns a promise which, when resolved, saves articles and returns them
+  loadAllTheArticles() {
     return new Promise(resolve => {
-      this.http.get('assets/articles.json').subscribe(response => {
-        this.articles = response.json();
+      // If the articles are already loaded, don't bother loading them again
+      if (this.articles) {
         resolve(this.articles);
+      } else {
+        // Load articles from JSON file
+        this.http.get('assets/articles.json').subscribe(response => {
+          // console.log('WE ONLY WANT TO RUN THIS ONCE');
+          this.articles = response.json();
+          resolve(this.articles);
+        });
+      }
+    });
+  }
+
+  // Get specific article with content, e.g. for detail page
+  getArticleById(id) {
+    return new Promise(resolve => {
+      // Gather all the articles (optimisation - this shouldn't always be necessary)
+      this.loadAllTheArticles().then(articles => {
+        // Filter out the specific article we want
+        const article = this.articles.find(_ => _.id == id); // NOT triple equals
+        // Return it with the promise within .then()
+        resolve(article);
       });
     });
   }
 
-  getArticleById(id) {
-    return new Promise(resolve => {
-      // Gather all the articles (optimisation - this shouldn't always be necessary)
-      this.getTheArticles().then(articles => {
-        // We should really do this in the getTheArticles function, parsing it properly
-        this.articles = articles;
-
-        // Filter out the specific article we want
-        const article = this.articles.find(_ => _.id == id); // NOT triple equals
-
-        // Return it with the promise within .then()
-        resolve(article);
-      });
+  // Search for the query within the article titles (ignoring case)
+  search(searchQuery) {
+    return this.articles.filter(article => {
+      return article.title.toLowerCase().includes(searchQuery.toLowerCase());
     });
   }
 }
