@@ -13,15 +13,17 @@ export class ArticleComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private ArticleService: ArticleService
+    private articleService: ArticleService
   ) {}
 
   ngOnInit() {
     // Get the parameter ID from URL
+    console.log('load 2');
     const sub = this.route.params.subscribe(params => {
       // Get the article using that ID
-      this.ArticleService.getArticleById(params.id).then(article => {
+      this.articleService.getArticleById(params.id).then(article => {
         // Save the article to this component here, for use in the template
+
         this.article = article;
       });
     });
