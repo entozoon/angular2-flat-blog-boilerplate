@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Http, Response } from '@angular/http';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
+import 'rxjs/add/operator/map';
 
 @Injectable()
 export class ArticleService {
@@ -29,12 +30,43 @@ export class ArticleService {
   getArticleById(id) {
     return new Promise(resolve => {
       // Gather all the articles (optimisation - this shouldn't always be necessary)
-      this.loadAllTheArticles().then(articles => {
-        // Filter out the specific article we want
-        const article = this.articles.find(_ => _.id == id); // NOT triple equals
-        // Return it with the promise within .then()
-        resolve(article);
-      });
+      this.loadAllTheArticles()
+        .then(articles => {
+          // Filter out the specific article we want
+          const article = this.articles.find(_ => _.id == id); // NOT triple equals
+          return article;
+        })
+        .then(article => {
+          // Replace article content from .html file if given a filepath
+          this.getContentForArticle(article.content).then(content => {
+            article.content = content;
+            return article;
+          });
+          return article;
+        })
+        .then(article => {
+          resolve(article);
+        });
+    });
+  }
+
+  // Get article content from html file using given filepath
+  getContentForArticle(filepath) {
+    return new Promise(resolve => {
+      this.http
+        .get(filepath)
+        .map(res => res)
+        .subscribe(
+          res => {
+            resolve(res['_body']);
+          },
+          err => {
+            // console.log(
+            //   'Content for article not found in filepath: ' + filepath
+            // );
+            // console.log(err);
+          }
+        );
     });
   }
 
