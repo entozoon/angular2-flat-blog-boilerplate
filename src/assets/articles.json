@@ -4,14 +4,16 @@
     "title": "Delicious Thing",
     "date": "2017-01-30",
     "tags": ["delicious", "things"],
-    "content": "This thing truly was delicious; let it be known."
+    "excerpt": "This thing truly was delicious; let it be known.",
+    "content": "/assets/content/brandname1/item-1.html"
   },
   {
     "id": 2,
     "title": "Vile Thing",
     "date": "2017-02-30",
     "tags": ["vile", "things"],
-    "content": "This subsequent thing however, was the vilest of things."
+    "excerpt": "This subsequent thing however, was the vilest of things.",
+    "content": "/assets/content/brandname2/item-2.html"
   },
   {
     "id": 3,
@@ -19,27 +21,6 @@
     "date": "2017-03-30",
     "tags": ["delectable", "things"],
     "excerpt": "Lorem jaffson",
-    "content": "emerge/diet.html"
-  },
-  {
-    "id": 4,
-    "title": "Dejectable Thing",
-    "date": "2017-04-30",
-    "tags": ["dejectable", "things"],
-    "content": "This other thing was, indeed, the most dejectable of things."
-  },
-  {
-    "id": 5,
-    "title": "Defamatory Thing",
-    "date": "2017-05-30",
-    "tags": ["defamatory", "things"],
-    "content": "This other thing was, indeed, the most defamatory of things."
-  },
-  {
-    "id": 6,
-    "title": "Domestic Thing",
-    "date": "2017-06-30",
-    "tags": ["domestic", "things"],
-    "content": "This other thing was, indeed, the most domestic of things."
+    "content": "/assets/content/brandname2/item-3.html"
   }
 ]

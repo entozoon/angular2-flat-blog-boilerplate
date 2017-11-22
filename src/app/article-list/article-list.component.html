@@ -11,4 +11,5 @@
 <div class="article-listing" *ngFor="let article of articles">
   <a routerLink="/article/{{article.id}}">{{article.id}}. {{article.title}}</a>
   <div>{{article.date}}</div>
+  <div>{{article.excerpt}}</div>
 </div>
