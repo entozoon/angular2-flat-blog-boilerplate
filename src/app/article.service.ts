@@ -4,61 +4,37 @@ import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 
 @Injectable()
 export class ArticleService {
-  private articlesSubject = new BehaviorSubject(null);
-  articlesCurrent = this.articlesSubject.asObservable();
+  articles;
 
-  private counter = 0;
-
-  constructor(public http: Http) {
-    // this.loadAllTheArticles();
-  }
+  constructor(public http: Http) {}
 
   // Get every article - returns a promise which, when resolved, saves articles and returns them
   loadAllTheArticles() {
-    this.counter++;
-    console.log('------------- ' + this.counter + ' ------------- ');
     return new Promise(resolve => {
-      // console.log('----------');
-      // console.log(this.articlesSubject);
-      // console.log('----------');
-
-      // if (this.articlesSubject && this.articlesSubject.length) {
-      //   console.log('SHORTCUTTTTTTTTTTTTTTTTTTTTTT');
-      //   resolve(this.articlesSubject);
-      // }
-
       // If the articles are already loaded, don't bother loading them again
-      if (this.articlesSubject.getValue()) {
-        resolve(this.articlesSubject.getValue());
+      if (this.articles) {
+        resolve(this.articles);
+      } else {
+        // Load articles from JSON file
+        this.http.get('assets/articles.json').subscribe(response => {
+          // console.log('WE ONLY WANT TO RUN THIS ONCE');
+          this.articles = response.json();
+          resolve(this.articles);
+        });
       }
-
-      // Load articles from JSON file
-      this.http.get('assets/articles.json').subscribe(response => {
-        console.log('WE ONLY WANT TO SEE THIS ONCE ');
-        // this.articlesSubject = response.json();
-
-        this.articlesSubject.next(response.json());
-        resolve(response.json());
-      });
     });
   }
 
   // Get specific article with content, e.g. for detail page
   getArticleById(id) {
     return new Promise(resolve => {
-      setTimeout(() => {
-        console.log('getArticleById');
-        console.log(this.articlesSubject.getValue());
-        // Gather all the articles (optimisation - this shouldn't always be necessary)
-        this.loadAllTheArticles().then(articles => {
-          // // We should really do this in the getAllTheArticles function, parsing it properly
-          // this.articlesSubject = articles;
-          // // Filter out the specific article we want
-          const article = this.articlesSubject.getValue().find(_ => _.id == id); // NOT triple equals
-          // Return it with the promise within .then()
-          resolve(article);
-        });
-      }, 2000);
+      // Gather all the articles (optimisation - this shouldn't always be necessary)
+      this.loadAllTheArticles().then(articles => {
+        // Filter out the specific article we want
+        const article = this.articles.find(_ => _.id == id); // NOT triple equals
+        // Return it with the promise within .then()
+        resolve(article);
+      });
     });
   }
 

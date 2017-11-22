@@ -8,7 +8,7 @@
 
 <br>
 
-<div class="article-listing" *ngFor="let article of articles">
+<div class="article-listing" *ngFor="let article of articlesToRender">
   <a routerLink="/article/{{article.id}}">{{article.id}}. {{article.title}}</a>
   <div>{{article.date}}</div>
 </div>

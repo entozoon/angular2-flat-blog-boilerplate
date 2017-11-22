@@ -9,7 +9,7 @@ import { ActivatedRoute } from '@angular/router';
   // Don't include ArticleService as a provider or it creates a new instance!
 })
 export class ArticleComponent implements OnInit {
-  public article;
+  article;
 
   constructor(
     private route: ActivatedRoute,
@@ -18,12 +18,10 @@ export class ArticleComponent implements OnInit {
 
   ngOnInit() {
     // Get the parameter ID from URL
-    console.log('load 2');
     const sub = this.route.params.subscribe(params => {
       // Get the article using that ID
       this.articleService.getArticleById(params.id).then(article => {
         // Save the article to this component here, for use in the template
-
         this.article = article;
       });
     });

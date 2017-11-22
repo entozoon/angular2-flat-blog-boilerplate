@@ -6,32 +6,22 @@ import { ArticleService } from '../article.service';
 @Component({
   selector: 'app-article-list',
   templateUrl: './article-list.component.html',
-  styleUrls: ['./article-list.component.scss'],
+  styleUrls: ['./article-list.component.scss']
   // Don't include ArticleService as a provider or it creates a new instance!
 })
 export class ArticleListComponent implements OnInit {
-  public articles;
-  public searchQuery;
+  articles;
+  articlesToRender;
+  searchQuery;
 
-  constructor(private articleService: ArticleService) {
+  constructor(private articleService: ArticleService) {}
+
+  ngOnInit() {
     // On first load, ask the ArticleService to get all the articles and save them to a variable
     // console.log('load 1');
     this.articleService.loadAllTheArticles().then(articles => {
-      //   this.articles = articles;
-      //   // We have the articles now! Site complete, right?
-      //   // console.log(this.articleService.articles);
-    });
-  }
-
-  ngOnInit() {
-    console.log('ngOnInit');
-
-    this.articleService.articlesCurrent.subscribe(articles => {
-      if (articles) {
-        this.articles = articles;
-        console.log('SUSCRIBE REC:');
-        console.log(articles);
-      }
+      this.articles = this.articlesToRender = articles;
+      // We have the articles now! Site complete, right?
     });
   }
 
@@ -41,12 +31,12 @@ export class ArticleListComponent implements OnInit {
 
     // Filter articles
 
-    // // Simply search for the query within the article titles (ignoring case)
-    // this.articles = this.articlesCollection.filter(article => {
-    //   return article.title
-    //     .toLowerCase()
-    //     .includes(this.searchQuery.toLowerCase());
-    // });
+    // Simply search for the query within the article titles (ignoring case)
+    this.articlesToRender = this.articles.filter(article => {
+      return article.title
+        .toLowerCase()
+        .includes(this.searchQuery.toLowerCase());
+    });
 
     // Add to the results any content matches for the query.. but not if already in the results, erm..
   }
