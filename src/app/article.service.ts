@@ -26,9 +26,13 @@ export class ArticleService {
       //   console.log('SHORTCUTTTTTTTTTTTTTTTTTTTTTT');
       //   resolve(this.articlesSubject);
       // }
-      console.log('loadAllTheArticles');
-      console.log(this.articlesSubject.getValue());
 
+      // If the articles are already loaded, don't bother loading them again
+      if (this.articlesSubject.getValue()) {
+        resolve(this.articlesSubject.getValue());
+      }
+
+      // Load articles from JSON file
       this.http.get('assets/articles.json').subscribe(response => {
         console.log('WE ONLY WANT TO SEE THIS ONCE ');
         // this.articlesSubject = response.json();
@@ -38,11 +42,6 @@ export class ArticleService {
       });
     });
   }
-
-  // getAllTheArticles() {
-  //   console.log('getAllTheArticles');
-  //   return this.articlesSubject;
-  // }
 
   // Get specific article with content, e.g. for detail page
   getArticleById(id) {

@@ -5,8 +5,8 @@ import { ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'app-article',
   templateUrl: './article.component.html',
-  styleUrls: ['./article.component.scss'],
-  providers: [ArticleService]
+  styleUrls: ['./article.component.scss']
+  // Don't include ArticleService as a provider or it creates a new instance!
 })
 export class ArticleComponent implements OnInit {
   public article;

@@ -7,7 +7,7 @@ import { ArticleService } from '../article.service';
   selector: 'app-article-list',
   templateUrl: './article-list.component.html',
   styleUrls: ['./article-list.component.scss'],
-  providers: [ArticleService]
+  // Don't include ArticleService as a provider or it creates a new instance!
 })
 export class ArticleListComponent implements OnInit {
   public articles;

@@ -1,14 +1,14 @@
 import { Component } from '@angular/core';
+import { ArticleService } from './article.service';
 
 @Component({
   selector: 'app-root',
   styleUrls: ['./app.component.scss'],
-  templateUrl: './app.component.html'
+  templateUrl: './app.component.html',
+  providers: [ArticleService]
 })
-
 export class AppComponent {
   title = 'Site';
 
-  constructor() { }
-
+  constructor(private articleService: ArticleService) {}
 }
