@@ -11,7 +11,6 @@ import { ArticleService } from '../article.service';
 })
 export class ArticleListComponent implements OnInit {
   articles;
-  articlesToRender;
   searchQuery;
 
   constructor(private articleService: ArticleService) {}
@@ -20,7 +19,7 @@ export class ArticleListComponent implements OnInit {
     // On first load, ask the ArticleService to get all the articles and save them to a variable
     // console.log('load 1');
     this.articleService.loadAllTheArticles().then(articles => {
-      this.articles = this.articlesToRender = articles;
+      this.articles = articles;
       // We have the articles now! Site complete, right?
     });
   }
@@ -29,15 +28,7 @@ export class ArticleListComponent implements OnInit {
     // No need to pass the query as a parameter, it's already two-way bound to this.searchQuery
     console.log('Searching: ' + this.searchQuery);
 
-    // Filter articles
-
-    // Simply search for the query within the article titles (ignoring case)
-    this.articlesToRender = this.articles.filter(article => {
-      return article.title
-        .toLowerCase()
-        .includes(this.searchQuery.toLowerCase());
-    });
-
-    // Add to the results any content matches for the query.. but not if already in the results, erm..
+    // Get a filtered array of articles
+    this.articles = this.articleService.search(this.searchQuery);
   }
 }

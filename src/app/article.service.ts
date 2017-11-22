@@ -38,8 +38,10 @@ export class ArticleService {
     });
   }
 
-  // Search by title
-  search(title) {
-    return new Promise(resolve => {});
+  // Search for the query within the article titles (ignoring case)
+  search(searchQuery) {
+    return this.articles.filter(article => {
+      return article.title.toLowerCase().includes(searchQuery.toLowerCase());
+    });
   }
 }
