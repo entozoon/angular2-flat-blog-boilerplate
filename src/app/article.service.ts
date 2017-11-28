@@ -55,7 +55,7 @@ export class ArticleService {
     filepath = '.' + filepath; // use relative paths, so can be deployed in a sub dir (like gh-pages)
 
     return new Promise(resolve => {
-      console.log('..getting: ' + filepath);
+      console.log('..getting seriously mad now: ' + filepath);
       console.log(window.location.href + '' + filepath);
 
       this.http
