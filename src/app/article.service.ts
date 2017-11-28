@@ -52,21 +52,25 @@ export class ArticleService {
 
   // Get article content from html file using given filepath
   getContentForArticle(filepath) {
-    filepath = '..' + filepath; // use relative paths, so can be deployed in a sub dir (like gh-pages)
+    filepath = '.' + filepath; // use relative paths, so can be deployed in a sub dir (like gh-pages)
 
     return new Promise(resolve => {
+      console.log('getting: ' + filepath);
+      console.log(window.location.href + '' + filepath);
+
       this.http
         .get(filepath)
         .map(res => res)
         .subscribe(
           res => {
+            console.log(res);
             resolve(res['_body']);
           },
           err => {
             // console.log(
             //   'Content for article not found in filepath: ' + filepath
             // );
-            // console.log(err);
+            console.log(err);
           }
         );
     });

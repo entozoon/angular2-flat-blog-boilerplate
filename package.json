@@ -8,7 +8,7 @@
     "build": "ng build",
     "build-prod":
       "ng build --prod --base-href \"https://entozoon.github.io/angular2-flat-blog-boilerplate/\"",
-    "ghpages": "angular-cli-ghpages",
+    "ghpages": "angular-cli-ghpages --no-silent",
     "deploy": "npm run build-prod && npm run ghpages",
     "test": "ng test",
     "lint": "ng lint",
