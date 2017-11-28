@@ -6,7 +6,9 @@
     "ng": "ng",
     "start": "ng serve --open --port 4321",
     "build": "ng build",
-    "deploy": "ng build --prod --base-href \"https://entozoon.github.io/angular2-flat-blog-boilerplate/\" && angular-cli-ghpages",
+    "build-prod":
+      "ng build --prod --base-href \"https://entozoon.github.io/angular2-flat-blog-boilerplate/\"",
+    "deploy": "npm run build-prod && angular-cli-ghpages",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
