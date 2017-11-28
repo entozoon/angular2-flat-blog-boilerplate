@@ -22,7 +22,7 @@ Build and deploy (which uses
 NOTE: It takes a couple minutes, for github to (automatically) update its live
 server with your branch. Have a look at the
 [branch commits page](https://github.com/entozoon/angular2-flat-blog-boilerplate/commits/gh-pages)
-and see if the commit is 'pending' (circle) or 'successful' (tick).
+to check the commit has gone through, and be patient.
 
 ## NOTES
 
