@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "title": "Delicious Thing",
+    "date": "2017-01-30",
+    "tags": ["delicious", "things"],
+    "excerpt": "This thing truly was delicious; let it be known..",
+    "content": "/assets/content/brandname1/item-1.html"
+  },
+  {
+    "id": 2,
+    "title": "Vile Thing",
+    "date": "2017-02-30",
+    "tags": ["vile", "things"],
+    "excerpt": "This subsequent thing however, was the vilest of things..",
+    "content": "/assets/content/brandname2/item-2.html"
+  },
+  {
+    "id": 3,
+    "title": "Delectable Thing",
+    "date": "2017-03-30",
+    "tags": ["delectable", "things"],
+    "excerpt": "Lorem jaffson",
+    "content": "/assets/content/brandname2/item-3.html"
+  }
+]

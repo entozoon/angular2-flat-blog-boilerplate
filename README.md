@@ -13,16 +13,13 @@ For now, at least.
 
 ## Deploying
 
-Build and deploy (which uses
-[angular-cli-ghpages](https://github.com/angular-buch/angular-cli-ghpages)),
-(NOTE: This'll be different for your project - look in `package.json`):
+Build the project into the /docs directory (which github is set up to use), by:
 
-    npm run deploy
+    npm run build-prod
+    Then commit and push as normal
 
 NOTE: It takes a couple minutes, for github to (automatically) update its live
-server with your branch. Have a look at the
-[branch commits page](https://github.com/entozoon/angular2-flat-blog-boilerplate/commits/gh-pages)
-to check the commit has gone through, and be patient.
+server with your branch.
 
 ## NOTES
 

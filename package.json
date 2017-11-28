@@ -7,11 +7,8 @@
     "start": "ng serve --open --port 4321",
     "build": "ng build",
     "build-prod":
-      "ng build --prod --base-href \"https://entozoon.github.io/angular2-flat-blog-boilerplate/\" && echo > dist/.nojekyll",
+      "ng build --prod --output-path=docs --base-href \"https://entozoon.github.io/angular2-flat-blog-boilerplate/\" && echo > docs/.nojekyll",
     "ghpages": "angular-cli-ghpages --no-silent",
-    "deploy": "npm run build-prod && npm run ghpages",
-    "fix-gh-pages-branch":
-      "git push origin --delete gh-pages && git branch -D gh-pages && git init && npm run deploy",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
