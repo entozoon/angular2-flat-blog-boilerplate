@@ -52,7 +52,8 @@ export class ArticleService {
 
   // Get article content from html file using given filepath
   getContentForArticle(filepath) {
-    filepath = '../..' + filepath; // use relative paths, so can be deployed in a sub dir (like gh-pages)
+    filepath = '..' + filepath; // use relative paths, so can be deployed in a sub dir (like gh-pages)
+
     return new Promise(resolve => {
       this.http
         .get(filepath)
